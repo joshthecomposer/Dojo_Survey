@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+
+{%block content%}
+
+<table class="table">
+    <thead>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Favorite Languages</th>
+        <th>Comments</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{session['name']}}</td>
+            <td>{{session['location']}}</td>
+            <td>
+                {%for i in range(session['language'] | length)%}
+                    {%if session['language'][i] == session['language'][-1]:%}
+                        {{ session['language'][i] }}
+                    {%else%}
+                        {{session['language'][i] + ', ' }}
+                    {%endif%}
+                {%endfor%}
+            </td>
+            <td>{{session['comment']}}</td>
+        </tr>
+    </tbody>
+</table>
+
+{% endblock %}
